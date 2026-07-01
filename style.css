@@ -39,21 +39,20 @@ body {
 
 .header-flex {
     display: flex;
-    justify-content: flex-start; /* محاذاة كل شيء إلى البداية (اليمين) */
+    justify-content: flex-start;
     align-items: center;
     padding: 10px 0;
 }
 
-/* قسم الشعار المدمج (صورة + نص مرتب) */
 .logo-area a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    gap: 15px; /* مسافة بين الصورة والنص */
+    gap: 15px;
 }
 
 .logo-img {
-    height: 60px; /* مقاس مناسب للشعار */
+    height: 60px;
     width: auto;
     object-fit: contain;
 }
@@ -74,19 +73,18 @@ body {
     color: var(--primary-color);
     font-size: 14px;
     font-weight: 600;
-    margin-top: -3px; /* ضبط المسافة العمودية */
+    margin-top: -3px;
 }
 
-/* القائمة (التبويب الجديد في الزاوية اليسرى) */
 .nav-menu {
-    margin-right: auto; /* دفع القائمة إلى أقصى اليسار */
-    margin-left: 20px; /* مسافة بسيطة من حافة اليسار */
+    margin-right: auto;
+    margin-left: 20px;
 }
 
 .nav-menu ul {
     display: flex;
     list-style: none;
-    gap: 5px; /* مسافة بين التبويبات */
+    gap: 5px;
 }
 
 .nav-menu ul li a {
@@ -95,19 +93,18 @@ body {
     padding: 10px 18px;
     font-size: 15px;
     font-weight: 600;
-    border-radius: 4px; /* زوايا دائرية خفيفة للتصميم */
+    /* تصحيح الخطأ رقم 1: استبدال tab-border-radius بـ border-radius القياسية */
+    border-radius: 4px; 
     transition: 0.3s;
 }
 
-/* تصميم التبويب المفعل أو عند التحويم */
 .nav-menu ul li a:hover, .nav-menu ul li a.active {
     background-color: rgba(0, 120, 255, 0.15);
     color: var(--primary-color);
 }
 
-/* زر الواتساب في الهيدر */
 .contact-action {
-    margin-left: 10px; /* مسافة خفيفة بين القائمة وزر الاتصال */
+    margin-left: 10px;
 }
 
 .btn-call-nav {
@@ -129,8 +126,15 @@ body {
     transform: translateY(-2px);
 }
 
-/* باقي كود الـ CSS (Hero, Services, Footer) كما هو */
-/* ... (كود Hero Section) ... */
+/* تصحيح الخطأ رقم 2: استبدال glass-gradient غير القياسية بمتدرج لوني قياسي */
+.header-tagline {
+    background-image: linear-gradient(to right, rgba(17, 20, 27, 0.5), rgba(17, 20, 27, 0.8));
+    padding: 10px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+/* الـ Hero Section */
 .hero-section {
     height: 100vh;
     position: relative;
@@ -161,7 +165,7 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 42px;
+    font-size: 48px;
     font-weight: 700;
     margin-bottom: 20px;
     animation: fadeInDown 1s ease;
@@ -201,26 +205,83 @@ body {
     background-color: #1ebd59;
 }
 
+/* من نحن */
+.about-us-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+}
+
+.about-content-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-description {
+    color: #333;
+}
+
+.about-description p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+    text-align: justify;
+}
+
+.about-description p.lead-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 25px;
+    border-right: 4px solid var(--primary-color);
+    padding-right: 15px;
+}
+
+.about-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.مرتب-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 5px solid #f0f0f0;
+    transition: 0.5s;
+}
+
+.مرتب-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
 /* Services */
 .services-section {
-    padding: 80px 0;
+    padding: 100px 0;
     background-color: var(--light-color);
 }
 
 .section-title {
     text-align: center;
-    font-size: 32px;
-    margin-bottom: 50px;
+    font-size: 36px;
+    margin-bottom: 60px;
     position: relative;
+    font-weight: 700;
+    color: var(--dark-color);
 }
 
 .section-title::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 3px;
+    width: 70px;
+    height: 4px;
     background-color: var(--primary-color);
-    margin: 10px auto 0;
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
 .services-grid {
@@ -231,71 +292,84 @@ body {
 
 .service-card {
     background: #fff;
-    padding: 40px 30px;
+    padding: 50px 35px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     transition: 0.3s;
+    border-bottom: 3px solid transparent;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .service-card i {
-    font-size: 40px;
+    font-size: 45px;
     color: var(--primary-color);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--dark-color);
 }
 
 /* Footer */
 .main-footer {
     background-color: var(--dark-color);
     color: #fff;
-    padding: 60px 0 0;
+    padding: 80px 0 0;
 }
 
 .footer-logo-area {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    /* تصحيح الخطأ رقم 3: إضافة الفاصلة المنقوطة المفقودة */
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
 }
 
 .logo-img-footer {
-    height: 50px;
+    height: 55px;
     width: auto;
     object-fit: contain;
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    padding-bottom: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    padding-bottom: 50px;
 }
 
 .footer-col h4 {
-    font-size: 18px;
-    margin-bottom: 25px;
+    font-size: 19px;
+    margin-bottom: 30px;
     position: relative;
+    font-weight: 600;
 }
 
 .footer-col h4::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -10px;
     right: 0;
-    width: 40px;
-    height: 2px;
+    width: 45px;
+    height: 3px;
     background-color: var(--primary-color);
+    border-radius: 2px;
 }
 
 .footer-col p {
     color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 15px;
+    font-size: 15px;
+    margin-bottom: 18px;
+    line-height: 1.7;
 }
 
 .footer-col a {
@@ -308,21 +382,27 @@ body {
     color: #fff;
 }
 
+.social-links {
+    margin-top: 25px;
+}
+
 .social-links a {
     display: inline-block;
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     background-color: #222733;
     color: #fff;
     text-align: center;
-    line-height: 38px;
-    border-radius: 4px;
-    margin-left: 8px;
+    line-height: 42px;
+    border-radius: 5px;
+    margin-left: 10px;
     transition: 0.3s;
+    font-size: 17px;
 }
 
 .social-links a:hover {
     background-color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 .links-col ul {
@@ -330,18 +410,18 @@ body {
 }
 
 .links-col ul li {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .links-col ul li a i {
-    font-size: 11px;
-    margin-left: 5px;
+    font-size: 12px;
+    margin-left: 8px;
     color: var(--primary-color);
 }
 
 .footer-bottom {
     background-color: #0b0d12;
-    padding: 20px 0;
+    padding: 25px 0;
     border-top: 1px solid #1e232f;
     font-size: 14px;
     color: var(--text-muted);
@@ -366,42 +446,40 @@ body {
 }
 
 /* الهواتف المتجاوبة */
+@media (max-width: 1200px) {
+    .company-name { font-size: 18px; }
+    .hero-content h1 { font-size: 40px; }
+    .about-content-wrapper { gap: 30px; }
+}
+
 @media (max-width: 992px) {
-    .company-name {
-        font-size: 18px;
+    .about-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
     }
-    .hero-content h1 {
-        font-size: 36px;
+    .about-description p.lead-text {
+        border-right: none;
+        border-bottom: 3px solid var(--primary-color);
+        padding-right: 0;
+        padding-bottom: 15px;
+        display: inline-block;
     }
+    .مرتب-img { max-width: 400px; }
 }
 
 @media (max-width: 768px) {
     .header-flex {
-        flex-direction: column; /* ترتيب عمودي على الشاشات الصغيرة */
+        flex-direction: column;
         align-items: flex-start;
         padding: 15px 0;
         gap: 15px;
     }
-    .logo-area a {
-        gap: 10px;
-    }
-    .logo-img {
-        height: 50px;
-    }
-    .company-name {
-        font-size: 16px;
-    }
-    .nav-menu {
-        margin-right: 0;
-        margin-left: 0;
-    }
-    .nav-menu ul {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 2px;
-    }
-    .nav-menu ul li a {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
+    .logo-area a { gap: 10px; }
+    .logo-img { height: 50px; }
+    .company-name { font-size: 16px; }
+    .nav-menu { margin-right: 0; margin-left: 0; width: 100%; }
+    .nav-menu ul { flex-wrap: wrap; justify-content: center; gap: 2px; }
+    .nav-menu ul li a { padding: 8px 12px; font-size: 14px; }
+    .hero-content h1 { font-size: 32px; }
 }
