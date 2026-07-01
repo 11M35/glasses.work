@@ -1,4 +1,3 @@
-/* إعدادات الخطوط والصفحة العامة */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
 
 * {
@@ -13,7 +12,7 @@
     --dark-color: #11141b;
     --light-color: #f8f9fa;
     --text-muted: #a0a0a0;
-    --transition-speed: 0.8s; /* انسيابية النقل بين الخلفيات */
+    --transition-speed: 0.8s;
 }
 
 body {
@@ -28,68 +27,110 @@ body {
     margin: 0 auto;
 }
 
-/* الهيدر */
+/* الرأس (Header) */
 .main-header {
     background-color: rgba(17, 20, 27, 0.95);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
 }
 
 .header-flex {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* محاذاة كل شيء إلى البداية (اليمين) */
     align-items: center;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 
-.logo a {
-    color: #fff;
+/* قسم الشعار المدمج (صورة + نص مرتب) */
+.logo-area a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    gap: 15px; /* مسافة بين الصورة والنص */
 }
 
-.logo a span {
+.logo-img {
+    height: 60px; /* مقاس مناسب للشعار */
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.company-name {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.company-subname {
     color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: -3px; /* ضبط المسافة العمودية */
+}
+
+/* القائمة (التبويب الجديد في الزاوية اليسرى) */
+.nav-menu {
+    margin-right: auto; /* دفع القائمة إلى أقصى اليسار */
+    margin-left: 20px; /* مسافة بسيطة من حافة اليسار */
 }
 
 .nav-menu ul {
     display: flex;
     list-style: none;
+    gap: 5px; /* مسافة بين التبويبات */
 }
 
 .nav-menu ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 18px;
     font-size: 15px;
     font-weight: 600;
+    border-radius: 4px; /* زوايا دائرية خفيفة للتصميم */
     transition: 0.3s;
 }
 
+/* تصميم التبويب المفعل أو عند التحويم */
 .nav-menu ul li a:hover, .nav-menu ul li a.active {
+    background-color: rgba(0, 120, 255, 0.15);
     color: var(--primary-color);
 }
 
-.btn-call {
-    background-color: var(--primary-color);
+/* زر الواتساب في الهيدر */
+.contact-action {
+    margin-left: 10px; /* مسافة خفيفة بين القائمة وزر الاتصال */
+}
+
+.btn-call-nav {
+    background-color: #25d366;
     color: #fff;
     text-decoration: none;
-    padding: 8px 20px;
+    padding: 8px 18px;
     border-radius: 4px;
     font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: 0.3s;
 }
 
-.btn-call:hover {
-    background-color: #0056b3;
+.btn-call-nav:hover {
+    background-color: #1ebd59;
+    transform: translateY(-2px);
 }
 
-/* قسم الـ Hero (تغيير الخلفية التلقائي) */
+/* باقي كود الـ CSS (Hero, Services, Footer) كما هو */
+/* ... (كود Hero Section) ... */
 .hero-section {
     height: 100vh;
     position: relative;
@@ -120,7 +161,7 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 700;
     margin-bottom: 20px;
     animation: fadeInDown 1s ease;
@@ -160,7 +201,7 @@ body {
     background-color: #1ebd59;
 }
 
-/* قسم الخدمات */
+/* Services */
 .services-section {
     padding: 80px 0;
     background-color: var(--light-color);
@@ -208,11 +249,24 @@ body {
     margin-bottom: 20px;
 }
 
-/* تذييل الصفحة (Footer) */
+/* Footer */
 .main-footer {
     background-color: var(--dark-color);
     color: #fff;
     padding: 60px 0 0;
+}
+
+.footer-logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+}
+
+.logo-img-footer {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
 .footer-grid {
@@ -220,15 +274,6 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
     padding-bottom: 40px;
-}
-
-.footer-col h3 {
-    font-size: 26px;
-    margin-bottom: 20px;
-}
-
-.footer-col h3 span {
-    color: var(--primary-color);
 }
 
 .footer-col h4 {
@@ -309,7 +354,6 @@ body {
     flex-wrap: wrap;
 }
 
-/* حركات الأنيكيشن للتأثيرات البصرية */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -321,22 +365,43 @@ body {
     }
 }
 
-/* شاشات الهواتف المحمولة */
+/* الهواتف المتجاوبة */
+@media (max-width: 992px) {
+    .company-name {
+        font-size: 18px;
+    }
+    .hero-content h1 {
+        font-size: 36px;
+    }
+}
+
 @media (max-width: 768px) {
     .header-flex {
-        flex-direction: column;
+        flex-direction: column; /* ترتيب عمودي على الشاشات الصغيرة */
+        align-items: flex-start;
+        padding: 15px 0;
         gap: 15px;
+    }
+    .logo-area a {
+        gap: 10px;
+    }
+    .logo-img {
+        height: 50px;
+    }
+    .company-name {
+        font-size: 16px;
+    }
+    .nav-menu {
+        margin-right: 0;
+        margin-left: 0;
     }
     .nav-menu ul {
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
+        gap: 2px;
     }
-    .hero-content h1 {
-        font-size: 32px;
-    }
-    .bottom-flex {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+    .nav-menu ul li a {
+        padding: 8px 12px;
+        font-size: 14px;
     }
 }
