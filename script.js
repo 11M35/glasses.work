@@ -1,27 +1,27 @@
-// مصفوفة صور الخلفية (عينة من موقع Unsplash ذو صلة بالزجاج)
-// تأكد من استبدالها بصورك الخاصة في مجلد images لاحقاً
+// مصفوفة صور الخلفية المحلية الخاصة بك بدلاً من الروابط الخارجية
+// تم تعديلها لتستدعي صورك الثلاثة مباشرة بنفس الامتداد المطلوب
 const images = [
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80', // واجهة زجاجية حديثة
-    'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1920&q=80', // تصميم داخلي مودرن
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80'  // نافذة زجاجية عملاقة
+    'WA1.jpeg',
+    'WA2.jpeg',
+    'WA3.jpeg',
+     'WA4.jpeg'
 ];
-
 let currentIndex = 0;
 const heroSection = document.getElementById('hero');
 
-// دالة تغيير الخلفية
+// دالة تغيير الخلفية (تعدل مسار الخلفية في الـ CSS برمجياً)
 function changeBackgroundImage() {
     heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
     currentIndex = (currentIndex + 1) % images.length;
 }
 
-// تشغيل الدالة فور تحميل الصفحة لأول مرة
+// تشغيل الدالة فور تحميل الصفحة لأول مرة لتظهر الصورة الأولى w1.jpeg
 changeBackgroundImage();
 
-// تعيين التغيير التلقائي ليعمل بدقة كل 10 ثوانٍ (10000ms)
+// التغيير التلقائي ليعمل بدقة كل 10 ثوانٍ (10000ms) بين الصور الثلاث
 setInterval(changeBackgroundImage, 10000);
 
-// تأثير الـ Header عند التمرير
+// تأثير الـ Header عند التمرير (ثابت بدون تغيير لحفظ التصميم)
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.main-header');
     if (window.scrollY > 50) {
@@ -33,7 +33,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// تفعيل روابط التنقل (Smooth Scroll) - لضمان تجربة مستخدم سلسة
+// تفعيل روابط التنقل السلس (Smooth Scroll)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
