@@ -12,9 +12,8 @@
     <!-- ===== HEADER ===== -->
     <header class="main-header">
         <div class="container header-flex">
-
             <div class="logo-area">
-                <a href="#">
+                <a href="index.html">
                     <img src="612.png" alt="GCG Glass Logo" class="logo-img">
                     <div class="logo-text">
                         <span class="company-name">مؤسسة الابداع العالمي</span>
@@ -22,22 +21,20 @@
                     </div>
                 </a>
             </div>
-
             <div class="contact-action">
                 <a href="https://wa.me/966504455398" target="_blank" class="btn-call-nav">
                     <i class="fab fa-whatsapp"></i> 0504455398
                 </a>
             </div>
-
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#" class="active">الرئيسية</a></li>
-                    <li><a href="#about">من نحن</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="index.html#about">من نحن</a></li>
+                    <li><a href="index.html#services">خدماتنا</a></li>
+                    <li><a href="gallery.html">معرض الأعمال</a></li>
+                    <li><a href="index.html#contact">اتصل بنا</a></li>
                 </ul>
             </nav>
-
         </div>
     </header>
 
@@ -48,7 +45,7 @@
             <h1>تركيب زجاج سيكوريت متكاملة بالدمام والشرقية 0504455398</h1>
             <p>نحن متخصصون في توريد وتركيب الزجاج السيكوريت، الواجهات، الدرابزين، والشاورات بأعلى معايير الجودة والأمان.</p>
             <div class="hero-buttons">
-                <a href="#about" class="btn-primary">تعرف علينا</a>
+                <a href="index.html#about" class="btn-primary">تعرف علينا</a>
                 <a href="https://wa.me/966504455398" target="_blank" class="btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> تواصل عبر الواتساب
                 </a>
@@ -60,7 +57,6 @@
     <section class="about-us-section" id="about">
         <div class="container">
             <h2 class="section-title">من نحن</h2>
-
             <div class="about-content-wrapper">
                 <div class="about-description">
                     <p class="lead-text">تركيب زجاج سيكوريت بالدمام. 0504455398</p>
@@ -70,7 +66,6 @@
                     <p>نحرص على نظافة المكان في وقت التركيب وتسليم العمل إلى العميل بأكمل وجه حسب رغبة العميل.</p>
                     <p>نحرص على الإللتزام بالمواعيد الدقيقة واوقات العمل المناسبة لدى العملاء.</p>
                 </div>
-
                 <div class="about-image">
                     <img src="q11.jpeg" alt="تركيب زجاج سيكوريت - الإبداع العالمي" class="about-img">
                 </div>
@@ -83,16 +78,26 @@
         <div class="container">
             <h2 class="section-title">خدماتنا المتميزة</h2>
             <div class="services-grid">
+                <!-- الخدمة الأولى المميزة -->
+                <div class="service-card service-featured">
+                    <div class="service-row">
+                        <div class="service-col-img">
+                            <img src="AS41.jpeg" alt="تركيب درابزين زجاج بالدمام" class="service-img">
+                        </div>
+                        <div class="service-col-text">
+                            <h3>تركيب درابزين زجاج بالدمام</h3>
+                            <p>نقدم خدمات تفصيل وتركيب درابزين الزجاج بتصميمات فريدة وجودة عالية. نحن نتعامل مع أفضل الموردين للزجاج لضمان الجودة والراحة لعملائنا تتوفر لدينا مجموعة متنوعة من الأنماط والأشكال لتناسب الأذواق المختلفة ونقوم بتركيبها بمعايير فنية وتقنية عالية تضمن الأمان والمتانة.</p>
+                            <a href="gallery.html" target="_blank" class="btn-gallery">معرض الأعمال <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- الخدمة الثانية -->
                 <div class="service-card">
                     <i class="fas fa-door-open"></i>
                     <h3>أبواب زجاجية</h3>
                     <p>تركيب وتفصيل أبواب سيكوريت وهيدروليك للمحلات والمنازل.</p>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>درابزين زجاج</h3>
-                    <p>تصاميم فريدة وعصرية لدرابزين السلالم والبلكونات بأمان عالٍ.</p>
-                </div>
+                <!-- الخدمة الثالثة -->
                 <div class="service-card">
                     <i class="fas fa-shower"></i>
                     <h3>كابينات شاور</h3>
@@ -103,7 +108,7 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="main-footer">
+    <footer class="main-footer" id="contact">
         <div class="container footer-grid">
             <div class="footer-col about-col">
                 <div class="footer-logo-area">
@@ -117,17 +122,15 @@
                     <a href="https://wa.me/966504455398" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-
             <div class="footer-col links-col">
                 <h4>روابط سريعة</h4>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
-                    <li><a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
-                    <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
-                    <li><a href="#contact"><i class="fas fa-chevron-left"></i> التزكيات والمعرض</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                    <li><a href="index.html#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-chevron-left"></i> معرض الأعمال</a></li>
                 </ul>
             </div>
-
             <div class="footer-col contact-col">
                 <h4>تواصل معنا</h4>
                 <p><i class="fas fa-map-marker-alt"></i> الدمام - المنطقة الشرقية</p>
@@ -136,10 +139,28 @@
             </div>
         </div>
 
+        <!-- ===== القسم السفلي المخصص للمهندس ===== -->
         <div class="footer-bottom">
             <div class="container bottom-flex">
                 <p>حقوق النشر © 2026 جميع الحقوق محفوظة لـ <strong>مؤسسة الابداع العالمي للزجاج</strong></p>
                 <p>تصميم وتنفيذ احترافي</p>
+            </div>
+            <!-- سطر المهندس والبريد الإلكتروني (مضاف حديثاً) -->
+            <div class="container" style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px 35px; font-size: 16px; color: #a0a0a0;">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-user-tie" style="color: #0078ff; font-size: 18px;"></i>
+                        المهندس: <strong style="color: #ffffff; font-weight: 700;">محمد سامي مغلس</strong>
+                    </span>
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-envelope" style="color: #0078ff; font-size: 16px;"></i>
+                        <a href="mailto:molp212121@gmail.com" style="color: #a0a0a0; text-decoration: none; transition: 0.3s; font-weight: 500;"
+                           onmouseover="this.style.color='#0078ff'"
+                           onmouseout="this.style.color='#a0a0a0'">
+                            molp212121@gmail.com
+                        </a>
+                    </span>
+                </div>
             </div>
         </div>
     </footer>

@@ -8,19 +8,14 @@ const images = [
 let currentIndex = 0;
 const heroSection = document.getElementById('hero');
 
-// دالة تغيير الخلفية
 function changeBackgroundImage() {
     heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
     currentIndex = (currentIndex + 1) % images.length;
 }
 
-// تشغيل الصورة الأولى فوراً
 changeBackgroundImage();
-
-// التبديل التلقائي كل 10 ثوانٍ
 setInterval(changeBackgroundImage, 10000);
 
-// تأثير الهيدر عند التمرير
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.main-header');
     if (window.scrollY > 50) {
@@ -32,15 +27,14 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// تمرير سلس للروابط الداخلية
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(targetId);
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
