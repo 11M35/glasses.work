@@ -297,7 +297,6 @@
             z-index: 10;
         }
 
-        /* ===== الفوتر المعدل ليظهر بشكل أنيق ===== */
         .main-footer {
             background: #11141b;
             color: #a0a0a0;
@@ -467,7 +466,7 @@
 </head>
 <body>
 
-    <!-- ===== الهيدر العلوي ===== -->
+    <!-- ===== الهيدر ===== -->
     <header class="main-header">
         <div class="container header-flex">
             <div class="logo-area">
@@ -488,7 +487,7 @@
         </div>
     </header>
 
-    <!-- ===== قسم المعرض ===== -->
+    <!-- ===== المعرض ===== -->
     <section class="gallery-page">
         <div class="container">
             <div class="page-header">
@@ -499,7 +498,7 @@
         </div>
     </section>
 
-    <!-- ===== نافذة عرض الصورة (Lightbox) ===== -->
+    <!-- ===== Lightbox ===== -->
     <div class="lightbox" id="lightbox">
         <span class="close-btn" id="closeLightbox"><i class="fas fa-times"></i></span>
         <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
@@ -508,7 +507,7 @@
         <div class="counter" id="counter">1 / 56</div>
     </div>
 
-    <!-- ===== الفوتر المعدل ===== -->
+    <!-- ===== الفوتر ===== -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -529,7 +528,9 @@
 
     <script>
         // ===================================================================
-        // 1. إنشاء جميع الصور تلقائياً من AS1 إلى AS57 مع حذف AS7
+        // 1. إنشاء جميع الصور تلقائياً
+        //    ✅ تم التعديل هنا: AS1.jpeg وليس AS1.JPEG أو as1.jpeg
+        //    الأسماء: AS1, AS2, ... AS57 (مع حذف AS7) وامتداد jpeg صغير
         // ===================================================================
         const galleryGrid = document.getElementById('galleryGrid');
         const totalImages = 57;
@@ -540,7 +541,8 @@
         for (let i = 1; i <= totalImages; i++) {
             if (i === excluded) continue;
 
-            const fileName = `AS${i}.JPEG`;
+            // ✅ الاسم الكبير AS + رقم + امتداد صغير .jpeg
+            const fileName = `AS${i}.jpeg`;
             
             const item = document.createElement('div');
             item.className = 'gallery-item';
@@ -628,6 +630,7 @@
         });
 
         console.log(`✅ تم تحميل ${imageElements.length} صورة بنجاح (تم حذف AS7).`);
+        console.log('📸 أسماء الصور المطلوبة: AS1.jpeg, AS2.jpeg ... AS57.jpeg (مع حذف AS7)');
     </script>
 
 </body>
