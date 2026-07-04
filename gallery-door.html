@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض ابواب زجاج - مؤسسة الابداع العالمي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Tahoma', sans-serif;
+        }
+
+        body {
+            background: #f4f7fc;
+            min-height: 100vh;
+        }
+
+        .main-header {
+            background-color: rgba(17, 20, 27, 0.97);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            padding: 10px 0;
+            backdrop-filter: blur(8px);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-area a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-name {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .company-subname {
+            color: #0078ff;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: -2px;
+        }
+
+        .btn-call-nav {
+            background-color: #25d366;
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .btn-call-nav:hover {
+            background-color: #1ebd59;
+            transform: scale(1.05);
+        }
+
+        .back-link-top {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+        .back-link-top:hover {
+            background: #0078ff;
+            border-color: #0078ff;
+        }
+
+        .gallery-page {
+            padding: 30px 0 70px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            color: #11141b;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        .page-header h1::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(to left, #0078ff, #00c6ff);
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+        .page-header p {
+            font-size: 18px;
+            color: #555;
+            margin-top: 12px;
+            font-weight: 400;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 3px solid transparent;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 120, 255, 0.15);
+            border-color: #0078ff;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item .zoom-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(0, 120, 255, 0.85);
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: 0.4s;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 30px rgba(0,120,255,0.3);
+            pointer-events: none;
+        }
+
+        .gallery-item:hover .zoom-icon {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+            animation: zoomIn 0.4s ease;
+        }
+
+        .lightbox .close-btn {
+            position: absolute;
+            top: 25px;
+            left: 35px;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 55px;
+            height: 55px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255,255,255,0.25);
+            z-index: 10;
+        }
+        .lightbox .close-btn:hover {
+            background: #ff4757;
+            transform: rotate(90deg);
+            border-color: #ff4757;
+        }
+
+        .lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.25);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 26px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .lightbox .nav-btn:hover {
+            background: #0078ff;
+            border-color: #0078ff;
+        }
+        .lightbox .nav-btn.prev {
+            right: 20px;
+        }
+        .lightbox .nav-btn.next {
+            left: 20px;
+        }
+
+        .lightbox .counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-size: 18px;
+            background: rgba(0,0,0,0.5);
+            padding: 8px 24px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 10;
+        }
+
+        .main-footer {
+            background: #11141b;
+            color: #a0a0a0;
+            text-align: center;
+            padding: 30px 0 20px;
+            margin-top: 40px;
+            border-top: 1px solid #1e232f;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-content .copyright {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+
+        .footer-content .engineer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px 35px;
+            font-size: 16px;
+            color: #a0a0a0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 18px;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-content .engineer-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-content .engineer-info i {
+            color: #0078ff;
+        }
+
+        .footer-content .engineer-info .name {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .footer-content .engineer-info .email-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-content .engineer-info .email-link:hover {
+            color: #0078ff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container { width: 95%; }
+            .page-header h1 { font-size: 28px; }
+            .page-header p { font-size: 16px; }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+            .gallery-item img {
+                height: 200px;
+            }
+            .logo-img { height: 40px; }
+            .company-name { font-size: 15px; }
+            .company-subname { font-size: 11px; }
+            .btn-call-nav { font-size: 12px; padding: 5px 12px; }
+            .back-link-top { font-size: 13px; padding: 4px 14px; }
+
+            .lightbox .nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            .lightbox .nav-btn.prev { right: 10px; }
+            .lightbox .nav-btn.next { left: 10px; }
+            .lightbox .close-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+                top: 15px;
+                left: 15px;
+            }
+            .lightbox .counter {
+                font-size: 15px;
+                padding: 6px 16px;
+                bottom: 20px;
+            }
+            .gallery-item .zoom-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            .footer-content .engineer-info {
+                font-size: 14px;
+                gap: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .gallery-item img {
+                height: 160px;
+            }
+            .page-header h1 { font-size: 22px; }
+            .header-flex { gap: 5px; }
+            .logo-area a { gap: 6px; }
+            .logo-img { height: 35px; }
+            .company-name { font-size: 13px; }
+            .company-subname { font-size: 10px; }
+            .btn-call-nav { font-size: 11px; padding: 4px 10px; }
+            .btn-call-nav i { font-size: 13px; }
+            .back-link-top { font-size: 12px; padding: 4px 12px; }
+
+            .lightbox .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            .lightbox .nav-btn.prev { right: 5px; }
+            .lightbox .nav-btn.next { left: 5px; }
+            .lightbox .close-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                top: 10px;
+                left: 10px;
+            }
+            .lightbox .counter {
+                font-size: 13px;
+                padding: 4px 14px;
+                bottom: 15px;
+            }
+            .lightbox img {
+                max-width: 98%;
+                max-height: 70vh;
+            }
+            .footer-content .engineer-info {
+                font-size: 13px;
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== الهيدر ===== -->
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo-area">
+                <a href="index.html">
+                    <img src="612.png" alt="GCG Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="company-name">مؤسسة الابداع العالمي</span>
+                        <span class="company-subname">للزجاج بالدمام</span>
+                    </div>
+                </a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a href="index.html" class="back-link-top"><i class="fas fa-arrow-right"></i> الرئيسية</a>
+                <a href="https://wa.me/966504455398" target="_blank" class="btn-call-nav">
+                    <i class="fab fa-whatsapp"></i> 0504455398
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== المعرض ===== -->
+    <section class="gallery-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>🚪 ابواب زجاجية - معرض الأعمال</h1>
+                <p>أحدث تصاميم الأبواب الزجاجية المنفذة في الدمام والمنطقة الشرقية بجودة واحترافية عالية</p>
+            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== Lightbox ===== -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-btn" id="closeLightbox"><i class="fas fa-times"></i></span>
+        <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
+        <button class="nav-btn next" id="nextBtn"><i class="fas fa-chevron-left"></i></button>
+        <img id="lightboxImg" src="" alt="معرض الصور">
+        <div class="counter" id="counter">1 / 28</div>
+    </div>
+
+    <!-- ===== الفوتر ===== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">جميع الحقوق محفوظة لمؤسسة الابداع العالمي للزجاج © 2026</p>
+                <div class="engineer-info">
+                    <span>
+                        <i class="fas fa-user-tie"></i>
+                        المهندس: <span class="name">محمد سامي مغلس</span>
+                    </span>
+                    <span>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:molp212121@gmail.com" class="email-link">molp212121@gmail.com</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===================================================================
+        // 1. إنشاء جميع الصور تلقائياً من WB1.jpeg إلى WB28.jpeg
+        //    ✅ جميع الأسماء: WB1.jpeg, WB2.jpeg ... WB28.jpeg
+        // ===================================================================
+        const galleryGrid = document.getElementById('galleryGrid');
+        const totalImages = 28; // من 1 إلى 28
+
+        const imageElements = [];
+
+        for (let i = 1; i <= totalImages; i++) {
+            const fileName = `WB${i}.jpeg`;
+            
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            
+            const img = document.createElement('img');
+            img.src = fileName;
+            img.alt = `ابواب زجاج - تصميم ${i}`;
+            img.loading = 'lazy';
+            item.appendChild(img);
+
+            const zoomIcon = document.createElement('div');
+            zoomIcon.className = 'zoom-icon';
+            zoomIcon.innerHTML = '<i class="fas fa-search-plus"></i>';
+            item.appendChild(zoomIcon);
+
+            item.addEventListener('click', () => {
+                const index = imageElements.findIndex(el => el === img);
+                if (index !== -1) {
+                    openLightbox(index);
+                }
+            });
+
+            galleryGrid.appendChild(item);
+            imageElements.push(img);
+        }
+
+        // ===================================================================
+        // 2. نظام الـ Lightbox
+        // ===================================================================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeLightbox');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            if (imageElements.length === 0) return;
+            const img = imageElements[currentIndex];
+            if (img) {
+                lightboxImg.src = img.src;
+                counter.textContent = `${currentIndex + 1} / ${imageElements.length}`;
+            }
+        }
+
+        function prevImage() {
+            if (imageElements.length === 0) return;
+            currentIndex = (currentIndex - 1 + imageElements.length) % imageElements.length;
+            updateLightbox();
+        }
+
+        function nextImage() {
+            if (imageElements.length === 0) return;
+            currentIndex = (currentIndex + 1) % imageElements.length;
+            updateLightbox();
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', prevImage);
+        nextBtn.addEventListener('click', nextImage);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        console.log(`✅ تم تحميل ${imageElements.length} صورة ابواب زجاج بنجاح!`);
+    </script>
+
+</body>
+</html>
