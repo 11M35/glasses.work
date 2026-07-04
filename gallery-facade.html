@@ -491,7 +491,7 @@
     <section class="gallery-page">
         <div class="container">
             <div class="page-header">
-                <h1>🏢 واجهات زجاجية - معرض الأعمال</h1>
+                <h1>🏢 واجهات زجاج - معرض الأعمال</h1>
                 <p>أحدث تصاميم الواجهات الزجاجية المنفذة في الدمام والمنطقة الشرقية بجودة واحترافية عالية</p>
             </div>
             <div class="gallery-grid" id="galleryGrid"></div>
@@ -504,7 +504,7 @@
         <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
         <button class="nav-btn next" id="nextBtn"><i class="fas fa-chevron-left"></i></button>
         <img id="lightboxImg" src="" alt="معرض الصور">
-        <div class="counter" id="counter">1 / 44</div>
+        <div class="counter" id="counter">1 / 32</div>
     </div>
 
     <!-- ===== الفوتر ===== -->
@@ -528,16 +528,16 @@
 
     <script>
         // ===================================================================
-        // 1. إنشاء جميع الصور تلقائياً من WE1.jpeg إلى WE44.jpeg
-        //    ✅ جميع الأسماء: WE1.jpeg, WE2.jpeg ... WE44.jpeg
+        // 1. إنشاء جميع الصور تلقائياً من WF1.jpeg إلى WF32.jpeg
+        //    ✅ جميع الأسماء: WF1.jpeg, WF2.jpeg ... WF32.jpeg
         // ===================================================================
         const galleryGrid = document.getElementById('galleryGrid');
-        const totalImages = 44; // من 1 إلى 44
+        const totalImages = 32; // من 1 إلى 32
 
         const imageElements = [];
 
         for (let i = 1; i <= totalImages; i++) {
-            const fileName = `WE${i}.jpeg`;
+            const fileName = `WF${i}.jpeg`;
             
             const item = document.createElement('div');
             item.className = 'gallery-item';
