@@ -44,7 +44,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    flex-wrap: wrap; /* يسمح بالانتقال إلى سطور جديدة على الجوال */
+    flex-wrap: wrap;
 }
 
 /* ===== الشعار ===== */
@@ -82,10 +82,10 @@ body {
     margin-top: -3px;
 }
 
-/* ===== زر الواتساب (في السطر الأول مع الشعار) ===== */
+/* ===== زر الواتساب في الهيدر ===== */
 .contact-action {
     flex-shrink: 0;
-    margin-left: auto; /* يدفع الزر إلى اليسار في الترتيب RTL */
+    margin-left: auto;
 }
 
 .btn-call-nav {
@@ -108,10 +108,10 @@ body {
     transform: translateY(-2px);
 }
 
-/* ===== القائمة (في السطر الثاني على الجوال) ===== */
+/* ===== القائمة ===== */
 .nav-menu {
-    width: 100%; /* يأخذ عرضاً كاملاً لينتقل إلى سطر جديد */
-    order: 3; /* يجعله يأتي بعد الشعار والواتساب */
+    width: 100%;
+    order: 3;
     margin-top: 8px;
 }
 
@@ -139,8 +139,6 @@ body {
     background-color: rgba(0, 120, 255, 0.15);
     color: var(--primary-color);
 }
-
-/* ===== باقي الأقسام (نفس الكود السابق) ===== */
 
 /* ===== HERO ===== */
 .hero-section {
@@ -189,8 +187,7 @@ body {
 
 .hero-buttons {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     gap: 15px;
 }
@@ -215,64 +212,81 @@ body {
     background-color: #0056b3;
 }
 
-.btn-whatsapp {
-    background-color: #25d366;
-    color: #fff;
-}
-
-.btn-whatsapp:hover {
-    background-color: #1ebd59;
-}
-
+/* ===== المجموعة الجديدة (زر واتساب + أيقونات صغيرة) ===== */
 .hero-social-group {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 12px;
+    width: 100%;
 }
 
 .hero-social-group .btn-whatsapp {
-    margin: 0;
+    background-color: #25d366;
+    color: #fff;
+    padding: 12px 35px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    border: none;
 }
 
-.hero-icon {
+.hero-social-group .btn-whatsapp:hover {
+    background-color: #1ebd59;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* ===== الأيقونات الدائرية الصغيرة مع الصور ===== */
+.hero-small-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero-icon-small {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    font-size: 24px;
-    color: #fff;
-    text-decoration: none;
+    overflow: hidden; /* يضمن اقتصاص الصورة داخل الدائرة */
     transition: 0.3s;
-    background: #222733;
-    border: 2px solid transparent;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: #222733; /* خلفية احتياطية */
 }
 
-.hero-icon:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
-
-.hero-icon.instagram {
-    background: #E4405F;
-}
-.hero-icon.instagram:hover {
-    background: #C13584;
+.hero-icon-small:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     border-color: #fff;
 }
 
-.hero-icon.snapchat {
-    background: #FFFC00;
-    color: #000;
+/* الصورة داخل الدائرة */
+.icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* تغطي الدائرة بالكامل مع الحفاظ على النسبة */
+    display: block;
 }
-.hero-icon.snapchat:hover {
-    background: #e6e600;
-    color: #000;
-    border-color: #fff;
-    box-shadow: 0 8px 25px rgba(255, 252, 0, 0.4);
+
+/* ألوان خلفية لكل دائرة (اختياري) */
+.hero-icon-small.phone {
+    background-color: #25d366; /* لون واتساب للهاتف */
+}
+.hero-icon-small.instagram {
+    background-color: #E4405F;
+}
+.hero-icon-small.snapchat {
+    background-color: #FFFC00;
 }
 
 /* ===== ABOUT ===== */
@@ -655,7 +669,6 @@ body {
 
 /* ===== RESPONSIVE ===== */
 
-/* للشاشات المتوسطة */
 @media (max-width: 992px) {
     .about-content-wrapper {
         grid-template-columns: 1fr;
@@ -696,7 +709,6 @@ body {
     }
 }
 
-/* ===== الهواتف (التعديلات الرئيسية للترتيب الجديد) ===== */
 @media (max-width: 768px) {
     .header-flex {
         flex-wrap: wrap;
@@ -752,15 +764,15 @@ body {
     .hero-content p {
         font-size: 16px;
     }
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+
+    .hero-social-group .btn-whatsapp {
+        font-size: 16px;
+        padding: 10px 25px;
     }
-    .hero-buttons a {
-        width: 80%;
-        justify-content: center;
-        padding: 12px 20px;
+
+    .hero-icon-small {
+        width: 42px;
+        height: 42px;
     }
 
     .about-us-section {
@@ -822,7 +834,6 @@ body {
     }
 }
 
-/* للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .logo-img {
         height: 32px;
@@ -850,6 +861,20 @@ body {
     .hero-content p {
         font-size: 15px;
     }
+
+    .hero-social-group .btn-whatsapp {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+
+    .hero-icon-small {
+        width: 38px;
+        height: 38px;
+    }
+    .hero-small-icons {
+        gap: 10px;
+    }
+
     .about-img {
         max-width: 260px;
     }
