@@ -16,6 +16,7 @@ function changeBackgroundImage() {
 changeBackgroundImage();
 setInterval(changeBackgroundImage, 10000);
 
+// تأثير الهيدر عند التمرير
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.main-header');
     if (window.scrollY > 50) {
@@ -23,10 +24,11 @@ window.addEventListener('scroll', () => {
         header.style.padding = '5px 0';
     } else {
         header.style.backgroundColor = 'rgba(17, 20, 27, 0.95)';
-        header.style.padding = '8px 0';
+        header.style.padding = '10px 0';
     }
 });
 
+// تمرير سلس للروابط الداخلية
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
