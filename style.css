@@ -242,7 +242,7 @@ body {
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
 }
 
-/* ===== الأيقونات الدائرية الصغيرة مع الصور ===== */
+/* ===== الأيقونات الدائرية الصغيرة مع الصور كخلفية ===== */
 .hero-small-icons {
     display: flex;
     justify-content: center;
@@ -251,17 +251,16 @@ body {
 }
 
 .hero-icon-small {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    overflow: hidden; /* يضمن اقتصاص الصورة داخل الدائرة */
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
     transition: 0.3s;
     text-decoration: none;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    background-color: #222733; /* خلفية احتياطية */
 }
 
 .hero-icon-small:hover {
@@ -270,23 +269,37 @@ body {
     border-color: #fff;
 }
 
-/* الصورة داخل الدائرة */
-.icon-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* تغطي الدائرة بالكامل مع الحفاظ على النسبة */
-    display: block;
+/* ===== خلفيات مخصصة لكل أيقونة ===== */
+
+/* الهاتف - خلفية زرقاء #0066ff */
+.hero-icon-small.phone {
+    background-color: #0066ff;
+    border-color: #0066ff;
+}
+.hero-icon-small.phone:hover {
+    border-color: #fff;
+    background-color: #0055dd;
 }
 
-/* ألوان خلفية لكل دائرة (اختياري) */
-.hero-icon-small.phone {
-    background-color: #25d366; /* لون واتساب للهاتف */
-}
+/* ✅ الإنستجرام - خلفية بيضاء وحدود شفافة */
 .hero-icon-small.instagram {
-    background-color: #E4405F;
+    background-color: #ffffff !important;
+    border-color: transparent !important;
 }
+.hero-icon-small.instagram:hover {
+    border-color: #0066ff !important;
+    background-color: #f0f0f0 !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* السناب - خلفية صفراء */
 .hero-icon-small.snapchat {
     background-color: #FFFC00;
+    border-color: #FFFC00;
+}
+.hero-icon-small.snapchat:hover {
+    border-color: #fff;
+    background-color: #e6e600;
 }
 
 /* ===== ABOUT ===== */
@@ -771,8 +784,9 @@ body {
     }
 
     .hero-icon-small {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
+        background-size: 55%;
     }
 
     .about-us-section {
@@ -868,8 +882,9 @@ body {
     }
 
     .hero-icon-small {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
+        background-size: 50%;
     }
     .hero-small-icons {
         gap: 10px;
